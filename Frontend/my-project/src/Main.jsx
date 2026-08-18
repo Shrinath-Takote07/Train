@@ -171,7 +171,7 @@ import { Train, Clock, MapPin } from "lucide-react";
 // YOUR DEPLOYED BACKEND URL
 // =====================================================
 const BACKEND_URL =
-  "https://train-l0t7egb0j-shrinath-takote07s-projects.vercel.app";
+  "https://train-git-main-shrinath-takote07s-projects.vercel.app";
 
 // =====================================================
 // SOCKET.IO CONNECTION
