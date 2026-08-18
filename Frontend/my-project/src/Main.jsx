@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import { Train, Clock, MapPin } from "lucide-react";
 
-const socket = io("https://train-l0t7egb0j-shrinath-takote07s-projects.vercel.app");
+const socket = io("https://train-l0t7egb0j-shrinath-takote07s-projects.vercel.app/");
 
 export default function Dashboard() {
   const [trainId, setTrainId] = useState("12626");
