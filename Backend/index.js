@@ -237,6 +237,93 @@
 
 // startServer();
 
+// import express from "express";
+// import cors from "cors";
+// import helmet from "helmet";
+// import morgan from "morgan";
+// import compression from "compression";
+// import dotenv from "dotenv";
+
+// import trainRoutes from "./routes/trainRoutes.js";
+// import pnrRoutes from "./routes/pnrRoutes.js";
+
+// import { seedTrains } from "./controllers/trainController.js";
+
+// dotenv.config();
+
+// const app = express();
+
+// const FRONTEND_URL = "https://train-iah8.vercel.app";
+
+// app.use(
+//   cors({
+//     origin: FRONTEND_URL,
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: false,
+//   })
+// );
+
+// app.options("*", cors());
+
+// app.use(
+//   helmet({
+//     crossOriginResourcePolicy: false,
+//   })
+// );
+
+// app.use(compression());
+// app.use(morgan("dev"));
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// app.use("/api", trainRoutes);
+// app.use("/api", pnrRoutes);
+
+// app.get("/", (req, res) => {
+//   res.status(200).json({
+//     message: "Train Backend API is running",
+//     status: "OK",
+//   });
+// });
+
+// app.get("/health", (req, res) => {
+//   res.status(200).json({
+//     status: "OK",
+//     timestamp: new Date().toISOString(),
+//   });
+// });
+
+// let initialized = false;
+
+// const initialize = async () => {
+//   if (initialized) return;
+
+//   await seedTrains();
+
+//   initialized = true;
+
+//   console.log("✅ Train datastore initialized");
+// };
+
+// const handler = async (req, res) => {
+//   try {
+//     await initialize();
+//     return app(req, res);
+//   } catch (error) {
+//     console.error("❌ Server error:", error);
+
+//     return res.status(500).json({
+//       success: false,
+//       message: "Server initialization failed",
+//     });
+//   }
+// };
+
+// export default handler;
+
+
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -247,20 +334,18 @@ import dotenv from "dotenv";
 import trainRoutes from "./routes/trainRoutes.js";
 import pnrRoutes from "./routes/pnrRoutes.js";
 
-import { seedTrains } from "./controllers/trainController.js";
-
 dotenv.config();
 
 const app = express();
-
 const FRONTEND_URL = "https://train-iah8.vercel.app";
 
+// 1. Clean up and apply CORS configuration before anything else
 app.use(
   cors({
     origin: FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: false,
+    credentials: true, // Switched to true in case you use auth headers later
   })
 );
 
@@ -274,10 +359,10 @@ app.use(
 
 app.use(compression());
 app.use(morgan("dev"));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// 2. Register application routes
 app.use("/api", trainRoutes);
 app.use("/api", pnrRoutes);
 
@@ -295,30 +380,6 @@ app.get("/health", (req, res) => {
   });
 });
 
-let initialized = false;
+// 3. Export the app directly so Vercel can handle routing natively
+export default app;
 
-const initialize = async () => {
-  if (initialized) return;
-
-  await seedTrains();
-
-  initialized = true;
-
-  console.log("✅ Train datastore initialized");
-};
-
-const handler = async (req, res) => {
-  try {
-    await initialize();
-    return app(req, res);
-  } catch (error) {
-    console.error("❌ Server error:", error);
-
-    return res.status(500).json({
-      success: false,
-      message: "Server initialization failed",
-    });
-  }
-};
-
-export default handler;
