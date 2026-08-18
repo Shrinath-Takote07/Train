@@ -9,10 +9,7 @@ import dotenv from "dotenv";
 
 import trainRoutes from "./routes/trainRoutes.js";
 import pnrRoutes from "./routes/pnrRoutes.js";
-import {
-  seedTrains,
-  updateTrainStatus,
-} from "./controllers/trainController.js";
+import { seedTrains, updateTrainStatus } from "./controllers/trainController.js";
 import { getTrainsData } from "./dataStore.js";
 
 dotenv.config();
@@ -20,73 +17,57 @@ dotenv.config();
 const app = express();
 const server = createServer(app);
 
-// Dynamic CORS configuration allowing credentials and headers
-const allowedOrigins = [
-  "https://train-iah8.vercel.app",
-  "http://localhost:5173",
-  "http://localhost:3000",
-  process.env.FRONTEND_URL,
-].filter(Boolean).map(url => url.replace(/\/$/, ""));
+// =====================================================
+// CORS CONFIGURATION
+// =====================================================
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://train-iah8.vercel.app";
 
 const corsOptions = {
-  origin: (origin, callback) => {
-    // Allow requests with no origin (e.g. mobile apps, curl, Postman)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.length === 0 || allowedOrigins.includes(origin) || allowedOrigins.includes("*")) {
-      return callback(null, origin);
-    }
-    // Fallback: reflect origin to satisfy credentials requirement
-    return callback(null, origin);
-  },
+  origin: FRONTEND_URL,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-  allowedHeaders: [
-    "Origin",
-    "X-Requested-With",
-    "Content-Type",
-    "Accept",
-    "Authorization",
-    "x-access-token"
-  ],
+  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
   exposedHeaders: ["Authorization"],
-  optionsSuccessStatus: 200,
 };
 
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
+
+// =====================================================
+// SOCKET.IO CONFIGURATION
+// =====================================================
 const io = new Server(server, {
-  cors: {
-    origin: (origin, callback) => callback(null, true),
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "x-access-token"],
-  },
+  cors: corsOptions,
   transports: ["websocket", "polling"],
-  allowEIO3: true,
 });
 
-// Middleware
+// =====================================================
+// MIDDLEWARE
+// =====================================================
 app.use(
   helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" },
     crossOriginOpenerPolicy: { policy: "unsafe-none" },
   })
 );
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
 app.use(compression());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
+// =====================================================
+// ROUTES
+// =====================================================
 app.use("/api", trainRoutes);
 app.use("/api", pnrRoutes);
 
-// Health check
 app.get("/health", (req, res) => {
   res.json({ status: "OK", timestamp: new Date().toISOString() });
 });
 
-// WebSocket connection
+// =====================================================
+// SOCKET.IO CONNECTION
+// =====================================================
 io.on("connection", (socket) => {
   console.log("🔌 Client connected:", socket.id);
 
@@ -110,9 +91,10 @@ io.on("connection", (socket) => {
   });
 });
 
-// Real-time update interval (every 3 seconds)
+// =====================================================
+// REAL-TIME UPDATES
+// =====================================================
 let updateInterval;
-
 const startRealTimeUpdates = () => {
   updateInterval = setInterval(async () => {
     try {
@@ -122,37 +104,36 @@ const startRealTimeUpdates = () => {
         await updateTrainStatus(randomTrain.trainId, io);
       }
     } catch (error) {
-      console.error("Error in real-time update:", error);
+      console.error("❌ Error in real-time update:", error);
     }
   }, 3000);
 };
 
-// Initialize server
+// =====================================================
+// START SERVER
+// =====================================================
 const startServer = async () => {
   try {
-    console.log("✅ Starting JSON-based datastore initialization...");
-
-    // Seed initial data if necessary
     await seedTrains();
-
-    // Start real-time updates
     startRealTimeUpdates();
 
     const PORT = process.env.PORT || 5000;
     server.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
-      console.log(`📡 WebSocket server ready for connections`);
+      console.log(`🌐 Frontend allowed: ${FRONTEND_URL}`);
     });
   } catch (error) {
-    console.error("Failed to start server:", error);
+    console.error("❌ Failed to start server:", error);
   }
 };
 
 startServer();
 
-// Graceful shutdown
+// =====================================================
+// GRACEFUL SHUTDOWN
+// =====================================================
 process.on("SIGINT", () => {
   clearInterval(updateInterval);
-  console.log("Shutting down gracefully...");
+  console.log("🛑 Shutting down gracefully...");
   process.exit(0);
 });
