@@ -163,20 +163,28 @@
 // }
 
 
-
 import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import { Train, Clock, MapPin } from "lucide-react";
 
-// Replace this URL with your ACTUAL deployed backend URL
-const BACKEND_URL = "https://train-l0t7egb0j-shrinath-takote07s-projects.vercel.app";
+// =====================================================
+// YOUR DEPLOYED BACKEND URL
+// =====================================================
+const BACKEND_URL =
+  "https://train-dibx2whkq-shrinath-takote07s-projects.vercel.app";
 
+// =====================================================
+// SOCKET.IO CONNECTION
+// =====================================================
 const socket = io(BACKEND_URL, {
-  transports: ["websocket", "polling"],
+  transports: ["polling", "websocket"],
+  autoConnect: true,
 });
 
 export default function Dashboard() {
   const [trainId, setTrainId] = useState("12626");
+
+  const [connected, setConnected] = useState(false);
 
   const [liveData, setLiveData] = useState({
     currentStation: "Origin Station",
@@ -187,23 +195,56 @@ export default function Dashboard() {
   });
 
   useEffect(() => {
-    // Subscribe to train
-    socket.emit("subscribeTrain", trainId);
+    // ================================================
+    // SOCKET CONNECT
+    // ================================================
+    const handleConnect = () => {
+      console.log("✅ Socket connected:", socket.id);
+      setConnected(true);
 
-    // Receive live updates
+      socket.emit("subscribeTrain", trainId);
+    };
+
+    // ================================================
+    // SOCKET DISCONNECT
+    // ================================================
+    const handleDisconnect = () => {
+      console.log("❌ Socket disconnected");
+      setConnected(false);
+    };
+
+    // ================================================
+    // LIVE TRAIN UPDATE
+    // ================================================
     const handleLiveUpdate = (data) => {
-      console.log("Live update:", data);
+      console.log("🚆 Live update received:", data);
 
       if (String(data.trainId) === String(trainId)) {
-        setLiveData(data);
+        setLiveData((previousData) => ({
+          ...previousData,
+          ...data,
+        }));
       }
     };
 
+    socket.on("connect", handleConnect);
+    socket.on("disconnect", handleDisconnect);
     socket.on("live-update", handleLiveUpdate);
 
-    // Cleanup
+    // If socket is already connected
+    if (socket.connected) {
+      socket.emit("subscribeTrain", trainId);
+      setConnected(true);
+    }
+
+    // ================================================
+    // CLEANUP
+    // ================================================
     return () => {
       socket.emit("unsubscribeTrain", trainId);
+
+      socket.off("connect", handleConnect);
+      socket.off("disconnect", handleDisconnect);
       socket.off("live-update", handleLiveUpdate);
     };
   }, [trainId]);
@@ -227,7 +268,9 @@ export default function Dashboard() {
           boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
         }}
       >
-        {/* Header */}
+        {/* ==========================================
+            HEADER
+        =========================================== */}
         <div
           style={{
             display: "flex",
@@ -255,7 +298,31 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Train ID */}
+        {/* ==========================================
+            CONNECTION STATUS
+        =========================================== */}
+        <div
+          style={{
+            marginBottom: "20px",
+            padding: "10px 12px",
+            borderRadius: "8px",
+            backgroundColor: connected
+              ? "#f0fdf4"
+              : "#fef2f2",
+            color: connected
+              ? "#166534"
+              : "#991b1b",
+            fontWeight: "bold",
+          }}
+        >
+          {connected
+            ? "🟢 Live connection connected"
+            : "🔴 Live connection disconnected"}
+        </div>
+
+        {/* ==========================================
+            TRAIN ID
+        =========================================== */}
         <div style={{ marginBottom: "20px" }}>
           <label
             style={{
@@ -283,7 +350,9 @@ export default function Dashboard() {
           />
         </div>
 
-        {/* Metrics */}
+        {/* ==========================================
+            METRICS
+        =========================================== */}
         <div
           style={{
             display: "grid",
@@ -292,7 +361,7 @@ export default function Dashboard() {
             marginBottom: "24px",
           }}
         >
-          {/* Current Station */}
+          {/* CURRENT STATION */}
           <div
             style={{
               padding: "12px",
@@ -309,6 +378,7 @@ export default function Dashboard() {
               }}
             >
               <MapPin size={18} />
+
               <span>Current Stop</span>
             </div>
 
@@ -322,12 +392,12 @@ export default function Dashboard() {
             </p>
           </div>
 
-          {/* Delay */}
+          {/* DELAY */}
           <div
             style={{
               padding: "12px",
               backgroundColor:
-                liveData.delay > 0
+                Number(liveData.delay) > 0
                   ? "#fef2f2"
                   : "#f0fdf4",
               borderRadius: "8px",
@@ -339,12 +409,13 @@ export default function Dashboard() {
                 alignItems: "center",
                 gap: "8px",
                 color:
-                  liveData.delay > 0
+                  Number(liveData.delay) > 0
                     ? "#991b1b"
                     : "#166534",
               }}
             >
               <Clock size={18} />
+
               <span>Delay Status</span>
             </div>
 
@@ -354,14 +425,16 @@ export default function Dashboard() {
                 fontWeight: "bold",
               }}
             >
-              {liveData.delay === 0
+              {Number(liveData.delay) === 0
                 ? "On Time"
                 : `${liveData.delay} Mins Late`}
             </p>
           </div>
         </div>
 
-        {/* Progress */}
+        {/* ==========================================
+            PROGRESS
+        =========================================== */}
         <div style={{ marginBottom: "20px" }}>
           <div
             style={{
@@ -391,7 +464,13 @@ export default function Dashboard() {
           >
             <div
               style={{
-                width: `${liveData.progress}%`,
+                width: `${Math.min(
+                  100,
+                  Math.max(
+                    0,
+                    Number(liveData.progress) || 0
+                  )
+                )}%`,
                 height: "100%",
                 backgroundColor: "#2563eb",
                 transition: "width 1s ease-in-out",
