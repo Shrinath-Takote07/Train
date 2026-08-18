@@ -12,10 +12,7 @@ import { FiRefreshCw, FiActivity } from "react-icons/fi";
 
 const Dashboard = () => {
   const [filterStatus, setFilterStatus] = useState("all");
-  const [routeFilters, setRouteFilters] = useState({
-    source: "",
-    destination: "",
-  });
+  const [routeFilters, setRouteFilters] = useState({ source: "", destination: "" });
   const { isConnected } = useSocket();
   const [autoRefresh, setAutoRefresh] = useState(true);
 
@@ -23,17 +20,13 @@ const Dashboard = () => {
     ["trains", filterStatus, routeFilters],
     async () => {
       let url = `/api/trains?status=${filterStatus}`;
-      if (routeFilters.source)
-        url += `&source=${encodeURIComponent(routeFilters.source)}`;
-      if (routeFilters.destination)
-        url += `&destination=${encodeURIComponent(routeFilters.destination)}`;
+      if (routeFilters.source) url += `&source=${encodeURIComponent(routeFilters.source)}`;
+      if (routeFilters.destination) url += `&destination=${encodeURIComponent(routeFilters.destination)}`;
 
-      const response = await api.get(url);
+      const response = await api.get(url); // ✅ sends credentials + token
       return response.data;
     },
-    {
-      refetchInterval: autoRefresh ? 5000 : false,
-    },
+    { refetchInterval: autoRefresh ? 5000 : false }
   );
 
   useEffect(() => {
@@ -55,18 +48,16 @@ const Dashboard = () => {
           <h1 className="text-3xl font-bold text-gray-900 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             🚆 Live Train Status Dashboard
           </h1>
-          <p className="text-gray-600 mt-1">
-            Real-time tracking of trains with WebSocket updates
-          </p>
+          <p className="text-gray-600 mt-1">Real-time tracking of trains with WebSocket updates</p>
         </div>
         <div className="flex items-center gap-4">
           <div
-            className={`flex items-center gap-2 px-3 py-2 rounded-full ${isConnected ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}
+            className={`flex items-center gap-2 px-3 py-2 rounded-full ${
+              isConnected ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+            }`}
           >
             <FiActivity className={isConnected ? "animate-pulse" : ""} />
-            <span className="text-sm font-medium">
-              {isConnected ? "Live" : "Disconnected"}
-            </span>
+            <span className="text-sm font-medium">{isConnected ? "Live" : "Disconnected"}</span>
           </div>
           <button
             onClick={() => {
@@ -74,9 +65,7 @@ const Dashboard = () => {
               if (!autoRefresh) refetch();
             }}
             className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 ${
-              autoRefresh
-                ? "bg-blue-600 text-white hover:bg-blue-700"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+              autoRefresh ? "bg-blue-600 text-white hover:bg-blue-700" : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
           >
             <FiRefreshCw className={autoRefresh ? "animate-spin-slow" : ""} />
@@ -93,10 +82,7 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <TrainFilters
-            filterStatus={filterStatus}
-            setFilterStatus={setFilterStatus}
-          />
+          <TrainFilters filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
         </div>
         <div>
           <PNRSearch />
@@ -107,10 +93,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {isLoading ? (
           Array.from({ length: 6 }).map((_, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl shadow-lg p-6 animate-pulse"
-            >
+            <div key={i} className="bg-white rounded-xl shadow-lg p-6 animate-pulse">
               <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
               <div className="space-y-3">
                 <div className="h-4 bg-gray-200 rounded w-full"></div>
@@ -149,9 +132,7 @@ const Dashboard = () => {
 
       {data?.data?.length === 0 && !isLoading && (
         <div className="text-center py-12">
-          <p className="text-gray-500 text-lg">
-            No trains found matching the criteria
-          </p>
+          <p className="text-gray-500 text-lg">No trains found matching the criteria</p>
         </div>
       )}
     </div>
