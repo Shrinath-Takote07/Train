@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { motion } from "framer-motion";
-import axios from "axios";
+import api from "../services/api";
 import { useSocket } from "../context/SocketContext";
 import TrainCard from "../components/TrainCard";
 import {
@@ -25,9 +25,7 @@ const PNRStatus = () => {
   const { data, isLoading, error } = useQuery(
     ["pnr", number],
     async () => {
-      const response = await axios.get(
-        `https://train-git-main-shrinath-takote07s-projects.vercel.app/api/pnr/${number}`,
-      );
+      const response = await api.get(`/api/pnr/${number}`);
       return response.data;
     },
     {
@@ -156,9 +154,11 @@ const PNRStatus = () => {
           <div className="border-t border-gray-200 pt-4">
             <div className="flex items-center gap-2 mb-3">
               <FiAlertTriangle className="text-blue-500" />
-              <h3 className="font-semibold text-gray-900">Live Train Tracking</h3>
+              <h3 className="font-semibold text-gray-900">
+                Live Train Tracking
+              </h3>
             </div>
-            
+
             {pnrData.trainDetails ? (
               <div className="mt-4 max-w-md mx-auto md:max-w-full">
                 <TrainCard train={pnrData.trainDetails} />
