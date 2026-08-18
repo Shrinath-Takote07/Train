@@ -21,7 +21,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || "https://train-iah8.vercel.app/", // default vite port
+    origin: process.env.FRONTEND_URL || "https://train-iah8.vercel.app", // default vite port
     methods: ["GET", "POST", "PUT", "DELETE"],
   },
 });
