@@ -26,7 +26,7 @@ const PNRStatus = () => {
     ["pnr", number],
     async () => {
       const response = await axios.get(
-        `https://train-dibx2whkq-shrinath-takote07s-projects.vercel.app/api/pnr/${number}`,
+        `https://train-l0t7egb0j-shrinath-takote07s-projects.vercel.app/api/pnr/${number}`,
       );
       return response.data;
     },
