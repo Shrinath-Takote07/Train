@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { motion } from "framer-motion";
-import axios from "axios";
+import api from "../services/api";
 import { useSocket } from "../context/SocketContext";
 import {
   FiArrowLeft,
@@ -29,7 +29,7 @@ const TrainDetails = () => {
   const [realTimeData, setRealTimeData] = useState(null);
 
   const { data, isLoading, error } = useQuery(["train", id], async () => {
-    const response = await axios.get(`https://train-git-main-shrinath-takote07s-projects.vercel.app/api/trains/${id}`);
+    const response = await api.get(`/api/trains/${id}`);
     return response.data;
   });
 
@@ -191,30 +191,43 @@ const TrainDetails = () => {
             <div className="relative">
               <div className="absolute -left-[33px] md:-left-[41px] top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow"></div>
               <div>
-                <h4 className="font-semibold text-gray-900">{realTimeData.source} (Start)</h4>
-                <p className="text-sm text-gray-500">Departure: {new Date(realTimeData.departureTime).toLocaleTimeString()}</p>
+                <h4 className="font-semibold text-gray-900">
+                  {realTimeData.source} (Start)
+                </h4>
+                <p className="text-sm text-gray-500">
+                  Departure:{" "}
+                  {new Date(realTimeData.departureTime).toLocaleTimeString()}
+                </p>
               </div>
             </div>
-            
+
             {/* Intermediate Stops */}
             {realTimeData.stops.map((stop, i) => (
               <div key={i} className="relative">
                 <div className="absolute -left-[33px] md:-left-[41px] top-1 w-4 h-4 bg-gray-300 rounded-full border-4 border-white shadow"></div>
                 <div>
-                  <h4 className="font-semibold text-gray-900">{stop.stationName}</h4>
+                  <h4 className="font-semibold text-gray-900">
+                    {stop.stationName}
+                  </h4>
                   <p className="text-sm text-gray-500">
-                    Arr: {new Date(stop.arrivalTime).toLocaleTimeString()} | Dep: {new Date(stop.departureTime).toLocaleTimeString()}
+                    Arr: {new Date(stop.arrivalTime).toLocaleTimeString()} |
+                    Dep: {new Date(stop.departureTime).toLocaleTimeString()}
                   </p>
                 </div>
               </div>
             ))}
-            
+
             {/* Destination */}
             <div className="relative">
               <div className="absolute -left-[33px] md:-left-[41px] top-1 w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow"></div>
               <div>
-                <h4 className="font-semibold text-gray-900">{realTimeData.destination} (End)</h4>
-                <p className="text-sm text-gray-500">Arrival: {new Date(realTimeData.arrivalTime).toLocaleTimeString()}</p>
+                <h4 className="font-semibold text-gray-900">
+                  {realTimeData.destination} (End)
+                </h4>
+                <p className="text-sm text-gray-500">
+                  Arrival:{" "}
+                  {new Date(realTimeData.arrivalTime).toLocaleTimeString()}
+                </p>
               </div>
             </div>
           </div>
