@@ -1,6 +1,6 @@
+// src/services/api.js
 import axios from "axios";
 
-// Environment variable or local fallback
 const getBaseUrl = () => {
   if (import.meta.env.VITE_API_URL) return import.meta.env.VITE_API_URL;
   if (typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")) {
@@ -20,7 +20,6 @@ const getSocketUrl = () => {
 export const API_BASE_URL = getBaseUrl();
 export const SOCKET_URL = getSocketUrl();
 
-// Configured Axios Instance
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -29,14 +28,11 @@ const api = axios.create({
   },
 });
 
-// Request Interceptor: attach token if present in storage
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token") || sessionStorage.getItem("token");
     if (token) {
-      config.headers.Authorization = token.startsWith("Bearer ")
-        ? token
-        : `Bearer ${token}`;
+      config.headers.Authorization = token.startsWith("Bearer ") ? token : `Bearer ${token}`;
     }
     return config;
   },
