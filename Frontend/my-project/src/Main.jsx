@@ -163,6 +163,16 @@
 // }
 
 
+
+
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import { Train, Clock, MapPin } from "lucide-react";
@@ -177,13 +187,16 @@ const BACKEND_URL =
 // SOCKET.IO CONNECTION
 // =====================================================
 const socket = io(BACKEND_URL, {
-  transports: ["polling", "websocket"],
+  transports: ["websocket", "polling"], // ✅ prefer websocket first
+  withCredentials: true,                // ✅ send cookies/tokens
+  extraHeaders: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`, // ✅ attach token if required
+  },
   autoConnect: true,
 });
 
 export default function Dashboard() {
   const [trainId, setTrainId] = useState("12626");
-
   const [connected, setConnected] = useState(false);
 
   const [liveData, setLiveData] = useState({
@@ -201,7 +214,6 @@ export default function Dashboard() {
     const handleConnect = () => {
       console.log("✅ Socket connected:", socket.id);
       setConnected(true);
-
       socket.emit("subscribeTrain", trainId);
     };
 
@@ -242,7 +254,6 @@ export default function Dashboard() {
     // ================================================
     return () => {
       socket.emit("unsubscribeTrain", trainId);
-
       socket.off("connect", handleConnect);
       socket.off("disconnect", handleDisconnect);
       socket.off("live-update", handleLiveUpdate);
@@ -268,9 +279,7 @@ export default function Dashboard() {
           boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
         }}
       >
-        {/* ==========================================
-            HEADER
-        =========================================== */}
+        {/* HEADER */}
         <div
           style={{
             display: "flex",
@@ -280,38 +289,22 @@ export default function Dashboard() {
           }}
         >
           <Train size={32} color="#2563eb" />
-
           <div>
-            <h2 style={{ margin: 0 }}>
-              Railoo Live System
-            </h2>
-
-            <p
-              style={{
-                margin: 0,
-                color: "#6b7280",
-              }}
-            >
-              Tracking Train ID:{" "}
-              <strong>{trainId}</strong>
+            <h2 style={{ margin: 0 }}>Railoo Live System</h2>
+            <p style={{ margin: 0, color: "#6b7280" }}>
+              Tracking Train ID: <strong>{trainId}</strong>
             </p>
           </div>
         </div>
 
-        {/* ==========================================
-            CONNECTION STATUS
-        =========================================== */}
+        {/* CONNECTION STATUS */}
         <div
           style={{
             marginBottom: "20px",
             padding: "10px 12px",
             borderRadius: "8px",
-            backgroundColor: connected
-              ? "#f0fdf4"
-              : "#fef2f2",
-            color: connected
-              ? "#166534"
-              : "#991b1b",
+            backgroundColor: connected ? "#f0fdf4" : "#fef2f2",
+            color: connected ? "#166534" : "#991b1b",
             fontWeight: "bold",
           }}
         >
@@ -320,9 +313,7 @@ export default function Dashboard() {
             : "🔴 Live connection disconnected"}
         </div>
 
-        {/* ==========================================
-            TRAIN ID
-        =========================================== */}
+        {/* TRAIN ID INPUT */}
         <div style={{ marginBottom: "20px" }}>
           <label
             style={{
@@ -333,13 +324,10 @@ export default function Dashboard() {
           >
             Train ID
           </label>
-
           <input
             type="text"
             value={trainId}
-            onChange={(e) =>
-              setTrainId(e.target.value)
-            }
+            onChange={(e) => setTrainId(e.target.value)}
             style={{
               width: "100%",
               padding: "10px",
@@ -350,9 +338,7 @@ export default function Dashboard() {
           />
         </div>
 
-        {/* ==========================================
-            METRICS
-        =========================================== */}
+        {/* METRICS */}
         <div
           style={{
             display: "grid",
@@ -378,16 +364,9 @@ export default function Dashboard() {
               }}
             >
               <MapPin size={18} />
-
               <span>Current Stop</span>
             </div>
-
-            <p
-              style={{
-                margin: "8px 0 0 0",
-                fontWeight: "bold",
-              }}
-            >
+            <p style={{ margin: "8px 0 0 0", fontWeight: "bold" }}>
               {liveData.currentStation}
             </p>
           </div>
@@ -397,9 +376,7 @@ export default function Dashboard() {
             style={{
               padding: "12px",
               backgroundColor:
-                Number(liveData.delay) > 0
-                  ? "#fef2f2"
-                  : "#f0fdf4",
+                Number(liveData.delay) > 0 ? "#fef2f2" : "#f0fdf4",
               borderRadius: "8px",
             }}
           >
@@ -409,22 +386,13 @@ export default function Dashboard() {
                 alignItems: "center",
                 gap: "8px",
                 color:
-                  Number(liveData.delay) > 0
-                    ? "#991b1b"
-                    : "#166534",
+                  Number(liveData.delay) > 0 ? "#991b1b" : "#166534",
               }}
             >
               <Clock size={18} />
-
               <span>Delay Status</span>
             </div>
-
-            <p
-              style={{
-                margin: "8px 0 0 0",
-                fontWeight: "bold",
-              }}
-            >
+            <p style={{ margin: "8px 0 0 0", fontWeight: "bold" }}>
               {Number(liveData.delay) === 0
                 ? "On Time"
                 : `${liveData.delay} Mins Late`}
@@ -432,9 +400,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* ==========================================
-            PROGRESS
-        =========================================== */}
+        {/* PROGRESS */}
         <div style={{ marginBottom: "20px" }}>
           <div
             style={{
@@ -446,13 +412,10 @@ export default function Dashboard() {
             }}
           >
             <span>Progress Indicator</span>
-
             <span>
-              Platform:{" "}
-              <strong>{liveData.platform}</strong>
+              Platform: <strong>{liveData.platform}</strong>
             </span>
           </div>
-
           <div
             style={{
               width: "100%",
@@ -466,10 +429,7 @@ export default function Dashboard() {
               style={{
                 width: `${Math.min(
                   100,
-                  Math.max(
-                    0,
-                    Number(liveData.progress) || 0
-                  )
+                  Math.max(0, Number(liveData.progress) || 0)
                 )}%`,
                 height: "100%",
                 backgroundColor: "#2563eb",
@@ -477,7 +437,6 @@ export default function Dashboard() {
               }}
             />
           </div>
-
           <p
             style={{
               fontSize: "13px",
@@ -485,11 +444,11 @@ export default function Dashboard() {
               marginTop: "6px",
             }}
           >
-            Approaching:{" "}
-            {liveData.nextStation}
+            Approaching: {liveData.nextStation}
           </p>
         </div>
       </div>
     </div>
   );
 }
+
