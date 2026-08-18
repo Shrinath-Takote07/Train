@@ -171,7 +171,7 @@ import RouteSearch from "../components/RouteSearch";
 import { FiRefreshCw, FiActivity } from "react-icons/fi";
 
 const BACKEND_URL =
-  "https://train-dibx2whkq-shrinath-takote07s-projects.vercel.app";
+  "https://train-l0t7egb0j-shrinath-takote07s-projects.vercel.app";
 
 const Dashboard = () => {
   const [filterStatus, setFilterStatus] = useState("all");
