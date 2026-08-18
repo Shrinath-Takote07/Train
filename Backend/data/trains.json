@@ -1,0 +1,612 @@
+[
+  {
+    "trainId": "T0001",
+    "trainName": "Jan Shatabdi 1",
+    "number": "3045",
+    "source": "Ahmedabad",
+    "destination": "Jaipur",
+    "currentStation": "Kolkata",
+    "platform": 3,
+    "status": "Stopped",
+    "delay": 0,
+    "progress": 84,
+    "speed": 112,
+    "lastUpdated": "2026-08-18T11:57:25.032Z",
+    "nextStation": "Hyderabad Deccan",
+    "stops": [
+      {
+        "stationName": "Hyderabad Deccan",
+        "arrivalTime": "2026-08-18T12:31:38.998Z",
+        "departureTime": "2026-08-18T12:36:38.998Z"
+      },
+      {
+        "stationName": "Secunderabad",
+        "arrivalTime": "2026-08-18T15:31:38.998Z",
+        "departureTime": "2026-08-18T15:36:38.998Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.998Z",
+    "departureTime": "2026-08-18T09:31:38.998Z"
+  },
+  {
+    "trainId": "T0002",
+    "trainName": "Humsafar Express 2",
+    "number": "5296",
+    "source": "Lucknow",
+    "destination": "Kolkata",
+    "currentStation": "Jaipur",
+    "platform": 2,
+    "status": "Running",
+    "delay": 0,
+    "progress": 99,
+    "speed": 127,
+    "lastUpdated": "2026-08-18T11:57:58.041Z",
+    "nextStation": "Hyderabad Deccan",
+    "stops": [
+      {
+        "stationName": "Hyderabad Deccan",
+        "arrivalTime": "2026-08-18T12:31:38.998Z",
+        "departureTime": "2026-08-18T12:36:38.998Z"
+      },
+      {
+        "stationName": "Howrah",
+        "arrivalTime": "2026-08-18T13:31:38.998Z",
+        "departureTime": "2026-08-18T13:36:38.998Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.998Z",
+    "departureTime": "2026-08-18T09:31:38.998Z"
+  },
+  {
+    "trainId": "T0003",
+    "trainName": "Jan Shatabdi 3",
+    "number": "1888",
+    "source": "Pune Junction",
+    "destination": "Jaipur",
+    "currentStation": "Bangalore City",
+    "platform": 7,
+    "status": "On Time",
+    "delay": 0,
+    "progress": 95,
+    "speed": 109,
+    "lastUpdated": "2026-08-18T11:57:22.029Z",
+    "nextStation": "New Delhi",
+    "stops": [
+      {
+        "stationName": "New Delhi",
+        "arrivalTime": "2026-08-18T12:31:38.998Z",
+        "departureTime": "2026-08-18T12:36:38.998Z"
+      },
+      {
+        "stationName": "Ahmedabad",
+        "arrivalTime": "2026-08-18T13:31:38.998Z",
+        "departureTime": "2026-08-18T13:36:38.998Z"
+      },
+      {
+        "stationName": "Chennai Central",
+        "arrivalTime": "2026-08-18T14:31:38.998Z",
+        "departureTime": "2026-08-18T14:36:38.998Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.998Z",
+    "departureTime": "2026-08-18T09:31:38.998Z"
+  },
+  {
+    "trainId": "T0004",
+    "trainName": "Jan Shatabdi 4",
+    "number": "5001",
+    "source": "New Delhi",
+    "destination": "Mumbai Central",
+    "currentStation": "Pune Junction",
+    "platform": 1,
+    "status": "Running",
+    "delay": 0,
+    "progress": 100,
+    "speed": 122,
+    "lastUpdated": "2026-08-18T11:57:49.037Z",
+    "nextStation": "Pune Junction",
+    "stops": [
+      {
+        "stationName": "Pune Junction",
+        "arrivalTime": "2026-08-18T12:31:38.998Z",
+        "departureTime": "2026-08-18T12:36:38.998Z"
+      },
+      {
+        "stationName": "Jaipur",
+        "arrivalTime": "2026-08-18T14:31:38.999Z",
+        "departureTime": "2026-08-18T14:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0005",
+    "trainName": "Garib Rath 5",
+    "number": "8902",
+    "source": "Howrah",
+    "destination": "Secunderabad",
+    "currentStation": "Hyderabad Deccan",
+    "platform": 5,
+    "status": "Running",
+    "delay": 0,
+    "progress": 65,
+    "speed": 76,
+    "lastUpdated": "2026-08-18T11:55:25.223Z",
+    "nextStation": "Kolkata",
+    "stops": [
+      {
+        "stationName": "Kolkata",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Chennai Central",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      },
+      {
+        "stationName": "Bangalore City",
+        "arrivalTime": "2026-08-18T14:31:38.999Z",
+        "departureTime": "2026-08-18T14:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0006",
+    "trainName": "Humsafar Express 6",
+    "number": "9209",
+    "source": "Mumbai Central",
+    "destination": "Howrah",
+    "currentStation": "Ahmedabad",
+    "platform": 6,
+    "status": "Stopped",
+    "delay": 0,
+    "progress": 33,
+    "speed": 60,
+    "lastUpdated": "2026-08-18T11:57:31.033Z",
+    "nextStation": "Secunderabad",
+    "stops": [
+      {
+        "stationName": "Secunderabad",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      },
+      {
+        "stationName": "Hyderabad Deccan",
+        "arrivalTime": "2026-08-18T14:31:38.999Z",
+        "departureTime": "2026-08-18T14:36:38.999Z"
+      },
+      {
+        "stationName": "Bangalore City",
+        "arrivalTime": "2026-08-18T15:31:38.999Z",
+        "departureTime": "2026-08-18T15:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0007",
+    "trainName": "Vande Bharat 7",
+    "number": "7836",
+    "source": "Howrah",
+    "destination": "Ahmedabad",
+    "currentStation": "Howrah",
+    "platform": 3,
+    "status": "On Time",
+    "delay": 0,
+    "progress": 100,
+    "speed": 57,
+    "lastUpdated": "2026-08-18T11:57:40.035Z",
+    "nextStation": "Secunderabad",
+    "stops": [
+      {
+        "stationName": "Secunderabad",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Jaipur",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      },
+      {
+        "stationName": "New Delhi",
+        "arrivalTime": "2026-08-18T14:31:38.999Z",
+        "departureTime": "2026-08-18T14:36:38.999Z"
+      },
+      {
+        "stationName": "Lucknow",
+        "arrivalTime": "2026-08-18T15:31:38.999Z",
+        "departureTime": "2026-08-18T15:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0008",
+    "trainName": "Sampark Kranti 8",
+    "number": "2190",
+    "source": "Howrah",
+    "destination": "Pune Junction",
+    "currentStation": "Jaipur",
+    "platform": 5,
+    "status": "Delayed",
+    "delay": 34,
+    "progress": 25,
+    "speed": 58,
+    "lastUpdated": "2026-08-18T11:57:55.038Z",
+    "nextStation": "Ahmedabad",
+    "stops": [
+      {
+        "stationName": "Ahmedabad",
+        "arrivalTime": "2026-08-18T14:31:38.999Z",
+        "departureTime": "2026-08-18T14:36:38.999Z"
+      },
+      {
+        "stationName": "Bangalore City",
+        "arrivalTime": "2026-08-18T15:31:38.999Z",
+        "departureTime": "2026-08-18T15:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0009",
+    "trainName": "Rajdhani Express 9",
+    "number": "6564",
+    "source": "Howrah",
+    "destination": "New Delhi",
+    "currentStation": "Lucknow",
+    "platform": 3,
+    "status": "Running",
+    "delay": 0,
+    "progress": 42,
+    "speed": 25,
+    "lastUpdated": "2026-08-18T11:53:31.185Z",
+    "nextStation": "Ahmedabad",
+    "stops": [
+      {
+        "stationName": "Ahmedabad",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Mumbai Central",
+        "arrivalTime": "2026-08-18T14:31:38.999Z",
+        "departureTime": "2026-08-18T14:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0010",
+    "trainName": "Vande Bharat 10",
+    "number": "8609",
+    "source": "Secunderabad",
+    "destination": "Hyderabad Deccan",
+    "currentStation": "Secunderabad",
+    "platform": 7,
+    "status": "Delayed",
+    "delay": 44,
+    "progress": 96,
+    "speed": 66,
+    "lastUpdated": "2026-08-18T11:57:34.034Z",
+    "nextStation": "Mumbai Central",
+    "stops": [
+      {
+        "stationName": "Mumbai Central",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "New Delhi",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      },
+      {
+        "stationName": "Lucknow",
+        "arrivalTime": "2026-08-18T14:31:38.999Z",
+        "departureTime": "2026-08-18T14:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0011",
+    "trainName": "Shatabdi Express 11",
+    "number": "2559",
+    "source": "Hyderabad Deccan",
+    "destination": "Mumbai Central",
+    "currentStation": "Ahmedabad",
+    "platform": 2,
+    "status": "Delayed",
+    "delay": 104,
+    "progress": 74,
+    "speed": 91,
+    "lastUpdated": "2026-08-18T11:53:52.189Z",
+    "nextStation": "Ahmedabad",
+    "stops": [
+      {
+        "stationName": "Ahmedabad",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0012",
+    "trainName": "Tejas Express 12",
+    "number": "3942",
+    "source": "Mumbai Central",
+    "destination": "New Delhi",
+    "currentStation": "Kolkata",
+    "platform": 8,
+    "status": "Stopped",
+    "delay": 0,
+    "progress": 30,
+    "speed": 101,
+    "lastUpdated": "2026-08-18T11:54:52.209Z",
+    "nextStation": "Pune Junction",
+    "stops": [
+      {
+        "stationName": "Pune Junction",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Hyderabad Deccan",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0013",
+    "trainName": "Duronto Express 13",
+    "number": "1622",
+    "source": "Bangalore City",
+    "destination": "Chennai Central",
+    "currentStation": "Bangalore City",
+    "platform": 2,
+    "status": "Delayed",
+    "delay": 82,
+    "progress": 61,
+    "speed": 126,
+    "lastUpdated": "2026-08-18T11:54:43.203Z",
+    "nextStation": "Secunderabad",
+    "stops": [
+      {
+        "stationName": "Secunderabad",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Hyderabad Deccan",
+        "arrivalTime": "2026-08-18T14:31:38.999Z",
+        "departureTime": "2026-08-18T14:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0014",
+    "trainName": "Sampark Kranti 14",
+    "number": "3944",
+    "source": "Pune Junction",
+    "destination": "Secunderabad",
+    "currentStation": "Ahmedabad",
+    "platform": 5,
+    "status": "On Time",
+    "delay": 0,
+    "progress": 92,
+    "speed": 54,
+    "lastUpdated": "2026-08-18T11:57:52.037Z",
+    "nextStation": "Bangalore City",
+    "stops": [
+      {
+        "stationName": "Bangalore City",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Ahmedabad",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      },
+      {
+        "stationName": "Mumbai Central",
+        "arrivalTime": "2026-08-18T14:31:38.999Z",
+        "departureTime": "2026-08-18T14:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0015",
+    "trainName": "Shatabdi Express 15",
+    "number": "5233",
+    "source": "Lucknow",
+    "destination": "Pune Junction",
+    "currentStation": "Ahmedabad",
+    "platform": 1,
+    "status": "Running",
+    "delay": 0,
+    "progress": 71,
+    "speed": 64,
+    "lastUpdated": "2026-08-18T11:55:40.234Z",
+    "nextStation": "Ahmedabad",
+    "stops": [
+      {
+        "stationName": "Ahmedabad",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Chennai Central",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0016",
+    "trainName": "Garib Rath 16",
+    "number": "5597",
+    "source": "Chennai Central",
+    "destination": "Pune Junction",
+    "currentStation": "Kolkata",
+    "platform": 2,
+    "status": "Stopped",
+    "delay": 0,
+    "progress": 100,
+    "speed": 111,
+    "lastUpdated": "2026-08-18T11:52:25.167Z",
+    "nextStation": "Jaipur",
+    "stops": [
+      {
+        "stationName": "Jaipur",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Lucknow",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      },
+      {
+        "stationName": "Hyderabad Deccan",
+        "arrivalTime": "2026-08-18T14:31:38.999Z",
+        "departureTime": "2026-08-18T14:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0017",
+    "trainName": "Duronto Express 17",
+    "number": "4839",
+    "source": "Hyderabad Deccan",
+    "destination": "Jaipur",
+    "currentStation": "Mumbai Central",
+    "platform": 2,
+    "status": "Stopped",
+    "delay": 0,
+    "progress": 85,
+    "speed": 132,
+    "lastUpdated": "2026-08-18T11:57:43.037Z",
+    "nextStation": "Howrah",
+    "stops": [
+      {
+        "stationName": "Howrah",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Bangalore City",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0018",
+    "trainName": "Garib Rath 18",
+    "number": "7162",
+    "source": "Ahmedabad",
+    "destination": "Lucknow",
+    "currentStation": "Pune Junction",
+    "platform": 7,
+    "status": "Stopped",
+    "delay": 0,
+    "progress": 89,
+    "speed": 112,
+    "lastUpdated": "2026-08-18T11:55:01.212Z",
+    "nextStation": "Chennai Central",
+    "stops": [
+      {
+        "stationName": "Chennai Central",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0019",
+    "trainName": "Tejas Express 19",
+    "number": "7498",
+    "source": "Bangalore City",
+    "destination": "Howrah",
+    "currentStation": "Ahmedabad",
+    "platform": 6,
+    "status": "Stopped",
+    "delay": 0,
+    "progress": 43,
+    "speed": 96,
+    "lastUpdated": "2026-08-18T11:55:34.231Z",
+    "nextStation": "Jaipur",
+    "stops": [
+      {
+        "stationName": "Jaipur",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Mumbai Central",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  },
+  {
+    "trainId": "T0020",
+    "trainName": "Shatabdi Express 20",
+    "number": "7274",
+    "source": "New Delhi",
+    "destination": "Hyderabad Deccan",
+    "currentStation": "Mumbai Central",
+    "platform": 2,
+    "status": "Stopped",
+    "delay": 0,
+    "progress": 47,
+    "speed": 44,
+    "lastUpdated": "2026-08-18T11:55:22.222Z",
+    "nextStation": "Ahmedabad",
+    "stops": [
+      {
+        "stationName": "Ahmedabad",
+        "arrivalTime": "2026-08-18T12:31:38.999Z",
+        "departureTime": "2026-08-18T12:36:38.999Z"
+      },
+      {
+        "stationName": "Jaipur",
+        "arrivalTime": "2026-08-18T13:31:38.999Z",
+        "departureTime": "2026-08-18T13:36:38.999Z"
+      }
+    ],
+    "arrivalTime": "2026-08-18T21:31:38.999Z",
+    "departureTime": "2026-08-18T09:31:38.999Z"
+  }
+]

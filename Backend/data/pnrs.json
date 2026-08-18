@@ -1,0 +1,569 @@
+
+[
+  {
+    "pnrNumber": "PNR100001",
+    "trainNumber": "12001",
+    "trainName": "Shatabdi Express",
+    "journeyDate": "2026-08-20T05:34:40.385Z",
+    "from": "New Delhi",
+    "to": "Mumbai Central",
+    "passengers": [
+      {
+        "name": "Mr. Raj Kumar",
+        "seatNumber": "25",
+        "status": "Confirmed",
+        "coach": "A1"
+      },
+      {
+        "name": "Mrs. Priya Kumar",
+        "seatNumber": "26",
+        "status": "Confirmed",
+        "coach": "A1"
+      }
+    ],
+    "classType": "1A",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": true,
+    "lastUpdated": "2026-08-18T11:13:56.228Z"
+  },
+  {
+    "pnrNumber": "PNR100002",
+    "trainNumber": "12951",
+    "trainName": "Mumbai Rajdhani",
+    "journeyDate": "2026-08-21T08:15:20.000Z",
+    "from": "Mumbai Central",
+    "to": "New Delhi",
+    "passengers": [
+      {
+        "name": "Mr. Amit Sharma",
+        "seatNumber": "42",
+        "status": "Confirmed",
+        "coach": "B2"
+      }
+    ],
+    "classType": "2A",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T12:10:25.100Z"
+  },
+  {
+    "pnrNumber": "PNR100003",
+    "trainNumber": "12137",
+    "trainName": "Punjab Mail",
+    "journeyDate": "2026-08-22T10:20:00.000Z",
+    "from": "New Delhi",
+    "to": "Pune",
+    "passengers": [
+      {
+        "name": "Ms. Sneha Patil",
+        "seatNumber": "18",
+        "status": "RAC",
+        "coach": "S5"
+      },
+      {
+        "name": "Mr. Rohit Patil",
+        "seatNumber": "19",
+        "status": "RAC",
+        "coach": "S5"
+      }
+    ],
+    "classType": "3A",
+    "bookingStatus": "RAC",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T09:45:12.500Z"
+  },
+  {
+    "pnrNumber": "PNR100004",
+    "trainNumber": "12910",
+    "trainName": "Garib Rath Express",
+    "journeyDate": "2026-08-23T14:30:00.000Z",
+    "from": "Mumbai Central",
+    "to": "Ahmedabad",
+    "passengers": [
+      {
+        "name": "Mr. Karan Mehta",
+        "seatNumber": "55",
+        "status": "Confirmed",
+        "coach": "G3"
+      }
+    ],
+    "classType": "3A",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": true,
+    "lastUpdated": "2026-08-18T10:20:30.000Z"
+  },
+  {
+    "pnrNumber": "PNR100005",
+    "trainNumber": "11010",
+    "trainName": "Sinhagad Express",
+    "journeyDate": "2026-08-24T06:10:00.000Z",
+    "from": "Pune",
+    "to": "Mumbai CSMT",
+    "passengers": [
+      {
+        "name": "Mr. Vikram Joshi",
+        "seatNumber": "12",
+        "status": "Confirmed",
+        "coach": "C2"
+      },
+      {
+        "name": "Mrs. Neha Joshi",
+        "seatNumber": "13",
+        "status": "Confirmed",
+        "coach": "C2"
+      },
+      {
+        "name": "Master Aarav Joshi",
+        "seatNumber": "14",
+        "status": "Confirmed",
+        "coach": "C2"
+      }
+    ],
+    "classType": "CC",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": true,
+    "lastUpdated": "2026-08-18T13:05:45.200Z"
+  },
+  {
+    "pnrNumber": "PNR100006",
+    "trainNumber": "12220",
+    "trainName": "Duronto Express",
+    "journeyDate": "2026-08-25T18:45:00.000Z",
+    "from": "Secunderabad",
+    "to": "Mumbai Central",
+    "passengers": [
+      {
+        "name": "Mr. Rahul Verma",
+        "seatNumber": "31",
+        "status": "WL",
+        "coach": "WL"
+      }
+    ],
+    "classType": "2A",
+    "bookingStatus": "Waiting List",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T08:15:10.000Z"
+  },
+  {
+    "pnrNumber": "PNR100007",
+    "trainNumber": "12627",
+    "trainName": "Karnataka Express",
+    "journeyDate": "2026-08-26T07:25:00.000Z",
+    "from": "Bengaluru",
+    "to": "New Delhi",
+    "passengers": [
+      {
+        "name": "Mr. Suresh Rao",
+        "seatNumber": "67",
+        "status": "Confirmed",
+        "coach": "B4"
+      }
+    ],
+    "classType": "3A",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T14:30:22.000Z"
+  },
+  {
+    "pnrNumber": "PNR100008",
+    "trainNumber": "12810",
+    "trainName": "Howrah Mumbai Mail",
+    "journeyDate": "2026-08-27T21:15:00.000Z",
+    "from": "Howrah",
+    "to": "Mumbai CSMT",
+    "passengers": [
+      {
+        "name": "Ms. Anjali Singh",
+        "seatNumber": "22",
+        "status": "Confirmed",
+        "coach": "S3"
+      },
+      {
+        "name": "Mr. Rakesh Singh",
+        "seatNumber": "23",
+        "status": "RAC",
+        "coach": "S3"
+      }
+    ],
+    "classType": "SL",
+    "bookingStatus": "Partially Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T15:00:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100009",
+    "trainNumber": "12431",
+    "trainName": "Rajdhani Express",
+    "journeyDate": "2026-08-28T16:40:00.000Z",
+    "from": "New Delhi",
+    "to": "Chandigarh",
+    "passengers": [
+      {
+        "name": "Mr. Manish Gupta",
+        "seatNumber": "7",
+        "status": "Confirmed",
+        "coach": "A2"
+      }
+    ],
+    "classType": "1A",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": true,
+    "lastUpdated": "2026-08-18T11:40:15.000Z"
+  },
+  {
+    "pnrNumber": "PNR100010",
+    "trainNumber": "12301",
+    "trainName": "Kolkata Rajdhani",
+    "journeyDate": "2026-08-29T17:20:00.000Z",
+    "from": "Kolkata",
+    "to": "New Delhi",
+    "passengers": [
+      {
+        "name": "Mr. Arjun Das",
+        "seatNumber": "44",
+        "status": "RAC",
+        "coach": "B3"
+      }
+    ],
+    "classType": "2A",
+    "bookingStatus": "RAC",
+    "chartPrepared": true,
+    "lastUpdated": "2026-08-18T16:05:30.000Z"
+  },
+  {
+    "pnrNumber": "PNR100011",
+    "trainNumber": "11020",
+    "trainName": "Konark Express",
+    "journeyDate": "2026-08-30T09:10:00.000Z",
+    "from": "Bhubaneswar",
+    "to": "Mumbai CSMT",
+    "passengers": [
+      {
+        "name": "Ms. Kavita Rao",
+        "seatNumber": "35",
+        "status": "Confirmed",
+        "coach": "S6"
+      },
+      {
+        "name": "Mr. Nikhil Rao",
+        "seatNumber": "36",
+        "status": "Confirmed",
+        "coach": "S6"
+      }
+    ],
+    "classType": "SL",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T10:30:45.000Z"
+  },
+  {
+    "pnrNumber": "PNR100012",
+    "trainNumber": "12123",
+    "trainName": "Deccan Queen",
+    "journeyDate": "2026-08-31T07:15:00.000Z",
+    "from": "Mumbai CSMT",
+    "to": "Pune",
+    "passengers": [
+      {
+        "name": "Mr. Aditya Kulkarni",
+        "seatNumber": "11",
+        "status": "Confirmed",
+        "coach": "C1"
+      }
+    ],
+    "classType": "CC",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": true,
+    "lastUpdated": "2026-08-18T09:20:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100013",
+    "trainNumber": "12702",
+    "trainName": "Hussain Sagar Express",
+    "journeyDate": "2026-09-01T20:10:00.000Z",
+    "from": "Hyderabad",
+    "to": "Mumbai",
+    "passengers": [
+      {
+        "name": "Mr. Sameer Khan",
+        "seatNumber": "28",
+        "status": "Cancelled",
+        "coach": "B1"
+      }
+    ],
+    "classType": "2A",
+    "bookingStatus": "Cancelled",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T12:45:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100014",
+    "trainNumber": "12926",
+    "trainName": "Paschim Express",
+    "journeyDate": "2026-09-02T15:35:00.000Z",
+    "from": "Amritsar",
+    "to": "Mumbai Central",
+    "passengers": [
+      {
+        "name": "Mr. Deepak Singh",
+        "seatNumber": "71",
+        "status": "Confirmed",
+        "coach": "S8"
+      },
+      {
+        "name": "Mrs. Pooja Singh",
+        "seatNumber": "72",
+        "status": "Confirmed",
+        "coach": "S8"
+      }
+    ],
+    "classType": "SL",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T13:25:10.000Z"
+  },
+  {
+    "pnrNumber": "PNR100015",
+    "trainNumber": "12618",
+    "trainName": "Mangala Lakshadweep Express",
+    "journeyDate": "2026-09-03T11:50:00.000Z",
+    "from": "Ernakulam",
+    "to": "New Delhi",
+    "passengers": [
+      {
+        "name": "Ms. Meera Nair",
+        "seatNumber": "15",
+        "status": "RAC",
+        "coach": "S4"
+      }
+    ],
+    "classType": "3A",
+    "bookingStatus": "RAC",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T14:10:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100016",
+    "trainNumber": "12424",
+    "trainName": "New Delhi Dibrugarh Rajdhani",
+    "journeyDate": "2026-09-04T19:30:00.000Z",
+    "from": "New Delhi",
+    "to": "Dibrugarh",
+    "passengers": [
+      {
+        "name": "Mr. Abhishek Roy",
+        "seatNumber": "9",
+        "status": "Confirmed",
+        "coach": "A1"
+      }
+    ],
+    "classType": "1A",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T15:45:20.000Z"
+  },
+  {
+    "pnrNumber": "PNR100017",
+    "trainNumber": "12903",
+    "trainName": "Golden Temple Mail",
+    "journeyDate": "2026-09-05T22:00:00.000Z",
+    "from": "Mumbai Central",
+    "to": "Amritsar",
+    "passengers": [
+      {
+        "name": "Mr. Mohan Yadav",
+        "seatNumber": "48",
+        "status": "WL",
+        "coach": "WL"
+      },
+      {
+        "name": "Mrs. Sunita Yadav",
+        "seatNumber": "49",
+        "status": "WL",
+        "coach": "WL"
+      }
+    ],
+    "classType": "SL",
+    "bookingStatus": "Waiting List",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T08:40:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100018",
+    "trainNumber": "12009",
+    "trainName": "Mumbai Ahmedabad Shatabdi",
+    "journeyDate": "2026-09-06T06:45:00.000Z",
+    "from": "Mumbai Central",
+    "to": "Ahmedabad",
+    "passengers": [
+      {
+        "name": "Mr. Yash Shah",
+        "seatNumber": "4",
+        "status": "Confirmed",
+        "coach": "C1"
+      }
+    ],
+    "classType": "CC",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": true,
+    "lastUpdated": "2026-08-18T16:20:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100019",
+    "trainNumber": "11077",
+    "trainName": "Jhelum Express",
+    "journeyDate": "2026-09-07T13:20:00.000Z",
+    "from": "Pune",
+    "to": "Jammu Tawi",
+    "passengers": [
+      {
+        "name": "Mr. Prakash More",
+        "seatNumber": "62",
+        "status": "Confirmed",
+        "coach": "S7"
+      }
+    ],
+    "classType": "SL",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T11:55:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100020",
+    "trainNumber": "12860",
+    "trainName": "Gitanjali Express",
+    "journeyDate": "2026-09-08T09:40:00.000Z",
+    "from": "Mumbai CSMT",
+    "to": "Howrah",
+    "passengers": [
+      {
+        "name": "Ms. Riya Sen",
+        "seatNumber": "21",
+        "status": "Confirmed",
+        "coach": "B2"
+      },
+      {
+        "name": "Mr. Rahul Sen",
+        "seatNumber": "22",
+        "status": "Confirmed",
+        "coach": "B2"
+      }
+    ],
+    "classType": "2A",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T12:35:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100021",
+    "trainNumber": "12932",
+    "trainName": "Ahmedabad Double Decker",
+    "journeyDate": "2026-09-09T07:00:00.000Z",
+    "from": "Ahmedabad",
+    "to": "Mumbai Central",
+    "passengers": [
+      {
+        "name": "Mr. Harsh Patel",
+        "seatNumber": "16",
+        "status": "RAC",
+        "coach": "D1"
+      }
+    ],
+    "classType": "CC",
+    "bookingStatus": "RAC",
+    "chartPrepared": true,
+    "lastUpdated": "2026-08-18T15:10:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100022",
+    "trainNumber": "12425",
+    "trainName": "Jammu Rajdhani",
+    "journeyDate": "2026-09-10T18:25:00.000Z",
+    "from": "New Delhi",
+    "to": "Jammu Tawi",
+    "passengers": [
+      {
+        "name": "Mr. Vikash Sharma",
+        "seatNumber": "6",
+        "status": "Confirmed",
+        "coach": "A2"
+      }
+    ],
+    "classType": "1A",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T10:15:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100023",
+    "trainNumber": "12129",
+    "trainName": "Azad Hind Express",
+    "journeyDate": "2026-09-11T12:15:00.000Z",
+    "from": "Pune",
+    "to": "Howrah",
+    "passengers": [
+      {
+        "name": "Mr. Tanmay Deshmukh",
+        "seatNumber": "38",
+        "status": "Confirmed",
+        "coach": "S5"
+      },
+      {
+        "name": "Ms. Aditi Deshmukh",
+        "seatNumber": "39",
+        "status": "RAC",
+        "coach": "S5"
+      }
+    ],
+    "classType": "SL",
+    "bookingStatus": "Partially Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T13:50:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100024",
+    "trainNumber": "12955",
+    "trainName": "Mumbai Jaipur Superfast",
+    "journeyDate": "2026-09-12T20:45:00.000Z",
+    "from": "Mumbai Central",
+    "to": "Jaipur",
+    "passengers": [
+      {
+        "name": "Mr. Nitin Agarwal",
+        "seatNumber": "53",
+        "status": "Confirmed",
+        "coach": "B5"
+      }
+    ],
+    "classType": "3A",
+    "bookingStatus": "Confirmed",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T14:40:00.000Z"
+  },
+  {
+    "pnrNumber": "PNR100025",
+    "trainNumber": "11094",
+    "trainName": "Mahanagari Express",
+    "journeyDate": "2026-09-13T23:10:00.000Z",
+    "from": "Varanasi",
+    "to": "Mumbai CSMT",
+    "passengers": [
+      {
+        "name": "Mr. Rajesh Mishra",
+        "seatNumber": "27",
+        "status": "Cancelled",
+        "coach": "S3"
+      },
+      {
+        "name": "Mrs. Rekha Mishra",
+        "seatNumber": "28",
+        "status": "Cancelled",
+        "coach": "S3"
+      }
+    ],
+    "classType": "SL",
+    "bookingStatus": "Cancelled",
+    "chartPrepared": false,
+    "lastUpdated": "2026-08-18T16:50:00.000Z"
+  }
+]
