@@ -238,7 +238,6 @@
 // startServer();
 
 
-
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -256,7 +255,7 @@ dotenv.config();
 const app = express();
 
 // =====================================================
-// CORS
+// CONFIGURATION
 // =====================================================
 
 const allowedOrigins = [
@@ -264,11 +263,14 @@ const allowedOrigins = [
   "http://localhost:5173",
 ];
 
+// =====================================================
+// CORS
+// =====================================================
+
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Allow requests without Origin
-      // (Postman, curl, server-to-server)
+    origin: (origin, callback) => {
+      // Allow requests from Postman/curl/server-to-server
       if (!origin) {
         return callback(null, true);
       }
@@ -277,9 +279,9 @@ app.use(
         return callback(null, true);
       }
 
-      return callback(
-        new Error("CORS: Origin not allowed")
-      );
+      console.log("❌ CORS blocked origin:", origin);
+
+      return callback(new Error("CORS: Origin not allowed"));
     },
 
     methods: [
@@ -287,6 +289,7 @@ app.use(
       "POST",
       "PUT",
       "DELETE",
+      "PATCH",
       "OPTIONS",
     ],
 
@@ -296,11 +299,13 @@ app.use(
     ],
 
     credentials: false,
+
+    optionsSuccessStatus: 204,
   })
 );
 
 // =====================================================
-// MIDDLEWARE
+// SECURITY
 // =====================================================
 
 app.use(
@@ -308,6 +313,10 @@ app.use(
     crossOriginResourcePolicy: false,
   })
 );
+
+// =====================================================
+// GENERAL MIDDLEWARE
+// =====================================================
 
 app.use(compression());
 
@@ -322,7 +331,31 @@ app.use(
 );
 
 // =====================================================
-// ROUTES
+// ROOT
+// =====================================================
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Train Backend API is running",
+    status: "OK",
+  });
+});
+
+// =====================================================
+// HEALTH CHECK
+// =====================================================
+
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    status: "OK",
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// =====================================================
+// API ROUTES
 // =====================================================
 
 app.use("/api", trainRoutes);
@@ -330,24 +363,14 @@ app.use("/api", trainRoutes);
 app.use("/api", pnrRoutes);
 
 // =====================================================
-// ROOT
+// 404 HANDLER
 // =====================================================
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    message: "Train Backend API is running",
-    status: "OK",
-  });
-});
-
-// =====================================================
-// HEALTH
-// =====================================================
-
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "OK",
-    timestamp: new Date().toISOString(),
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Route not found",
+    path: req.originalUrl,
   });
 });
 
@@ -365,47 +388,59 @@ app.use((err, req, res, next) => {
     });
   }
 
-  res.status(500).json({
+  return res.status(500).json({
     success: false,
     message: "Internal Server Error",
+    error:
+      process.env.NODE_ENV === "development"
+        ? err.message
+        : undefined,
   });
 });
 
 // =====================================================
-// INITIALIZE DATA
+// DATABASE / DATA INITIALIZATION
 // =====================================================
 
 let initialized = false;
+let initializationPromise = null;
 
 const initialize = async () => {
   if (initialized) {
     return;
   }
 
-  try {
-    console.log(
-      "✅ Initializing train datastore..."
-    );
-
-    await seedTrains();
-
-    initialized = true;
-
-    console.log(
-      "✅ Train datastore initialized"
-    );
-  } catch (error) {
-    console.error(
-      "❌ Failed to initialize datastore:",
-      error
-    );
-
-    throw error;
+  if (initializationPromise) {
+    return initializationPromise;
   }
+
+  initializationPromise = (async () => {
+    try {
+      console.log("✅ Initializing train datastore...");
+
+      await seedTrains();
+
+      initialized = true;
+
+      console.log("✅ Train datastore initialized");
+    } catch (error) {
+      console.error(
+        "❌ Failed to initialize datastore:",
+        error
+      );
+
+      initialized = false;
+      initializationPromise = null;
+
+      throw error;
+    }
+  })();
+
+  return initializationPromise;
 };
 
 // =====================================================
-// VERCEL HANDLER
+// VERCEL SERVERLESS HANDLER
 // =====================================================
 
 const handler = async (req, res) => {
