@@ -103,7 +103,7 @@ import toast from "react-hot-toast";
 const SocketContext = createContext(null);
 
 const BACKEND_URL =
-  "https://train-l0t7egb0j-shrinath-takote07s-projects.vercel.app";
+  "https://train-git-main-shrinath-takote07s-projects.vercel.app";
 
 export const useSocket = () => {
   const context = useContext(SocketContext);
