@@ -26,7 +26,7 @@ const app = express();
 // =====================================================
 
 const FRONTEND_URL =
-  process.env.FRONTEND_URL || "https://train-iah8.vercel.app/";
+  process.env.FRONTEND_URL || "https://train-iah8.vercel.app";
 
 // =====================================================
 // HTTP SERVER
