@@ -29,7 +29,7 @@ const TrainDetails = () => {
   const [realTimeData, setRealTimeData] = useState(null);
 
   const { data, isLoading, error } = useQuery(["train", id], async () => {
-    const response = await axios.get(`http://localhost:5000/api/trains/${id}`);
+    const response = await axios.get(`https://train-dibx2whkq-shrinath-takote07s-projects.vercel.app/api/trains/${id}`);
     return response.data;
   });
 
