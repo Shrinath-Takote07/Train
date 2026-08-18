@@ -17,7 +17,7 @@ export const SocketProvider = ({ children }) => {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:5000", {
+    const newSocket = io("https://train-l0t7egb0j-shrinath-takote07s-projects.vercel.app", {
       transports: ["websocket"],
       autoConnect: true,
     });
