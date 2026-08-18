@@ -19,7 +19,7 @@ const Dashboard = () => {
   const { data, isLoading, error, refetch } = useQuery(
     ["trains", filterStatus, routeFilters],
     async () => {
-      let url = `http://localhost:5000/api/trains?status=${filterStatus}`;
+      let url = `https://train-dibx2whkq-shrinath-takote07s-projects.vercel.app/api/trains?status=${filterStatus}`;
       if (routeFilters.source) url += `&source=${encodeURIComponent(routeFilters.source)}`;
       if (routeFilters.destination) url += `&destination=${encodeURIComponent(routeFilters.destination)}`;
       
