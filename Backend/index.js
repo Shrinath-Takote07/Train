@@ -237,7 +237,6 @@
 
 // startServer();
 
-
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -254,59 +253,18 @@ dotenv.config();
 
 const app = express();
 
-// =====================================================
-// CONFIGURATION
-// =====================================================
-
-const allowedOrigins = [
-  "https://train-iah8.vercel.app",
-  "http://localhost:5173",
-];
-
-// =====================================================
-// CORS
-// =====================================================
+const FRONTEND_URL = "https://train-iah8.vercel.app";
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // Allow requests from Postman/curl/server-to-server
-      if (!origin) {
-        return callback(null, true);
-      }
-
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-
-      console.log("❌ CORS blocked origin:", origin);
-
-      return callback(new Error("CORS: Origin not allowed"));
-    },
-
-    methods: [
-      "GET",
-      "POST",
-      "PUT",
-      "DELETE",
-      "PATCH",
-      "OPTIONS",
-    ],
-
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-    ],
-
+    origin: FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: false,
-
-    optionsSuccessStatus: 204,
   })
 );
 
-// =====================================================
-// SECURITY
-// =====================================================
+app.options("*", cors());
 
 app.use(
   helmet({
@@ -314,145 +272,47 @@ app.use(
   })
 );
 
-// =====================================================
-// GENERAL MIDDLEWARE
-// =====================================================
-
 app.use(compression());
-
 app.use(morgan("dev"));
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
-
-// =====================================================
-// ROOT
-// =====================================================
+app.use("/api", trainRoutes);
+app.use("/api", pnrRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({
-    success: true,
     message: "Train Backend API is running",
     status: "OK",
   });
 });
 
-// =====================================================
-// HEALTH CHECK
-// =====================================================
-
 app.get("/health", (req, res) => {
   res.status(200).json({
-    success: true,
     status: "OK",
     timestamp: new Date().toISOString(),
   });
 });
 
-// =====================================================
-// API ROUTES
-// =====================================================
-
-app.use("/api", trainRoutes);
-
-app.use("/api", pnrRoutes);
-
-// =====================================================
-// 404 HANDLER
-// =====================================================
-
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    message: "Route not found",
-    path: req.originalUrl,
-  });
-});
-
-// =====================================================
-// ERROR HANDLER
-// =====================================================
-
-app.use((err, req, res, next) => {
-  console.error("❌ API Error:", err);
-
-  if (err.message?.startsWith("CORS:")) {
-    return res.status(403).json({
-      success: false,
-      message: err.message,
-    });
-  }
-
-  return res.status(500).json({
-    success: false,
-    message: "Internal Server Error",
-    error:
-      process.env.NODE_ENV === "development"
-        ? err.message
-        : undefined,
-  });
-});
-
-// =====================================================
-// DATABASE / DATA INITIALIZATION
-// =====================================================
-
 let initialized = false;
-let initializationPromise = null;
 
 const initialize = async () => {
-  if (initialized) {
-    return;
-  }
+  if (initialized) return;
 
-  if (initializationPromise) {
-    return initializationPromise;
-  }
+  await seedTrains();
 
-  initializationPromise = (async () => {
-    try {
-      console.log("✅ Initializing train datastore...");
+  initialized = true;
 
-      await seedTrains();
-
-      initialized = true;
-
-      console.log("✅ Train datastore initialized");
-    } catch (error) {
-      console.error(
-        "❌ Failed to initialize datastore:",
-        error
-      );
-
-      initialized = false;
-      initializationPromise = null;
-
-      throw error;
-    }
-  })();
-
-  return initializationPromise;
+  console.log("✅ Train datastore initialized");
 };
-
-// =====================================================
-// VERCEL SERVERLESS HANDLER
-// =====================================================
 
 const handler = async (req, res) => {
   try {
     await initialize();
-
     return app(req, res);
   } catch (error) {
-    console.error(
-      "❌ Server initialization error:",
-      error
-    );
+    console.error("❌ Server error:", error);
 
     return res.status(500).json({
       success: false,
