@@ -20,7 +20,7 @@ const server = createServer(app);
 // =====================================================
 // CORS CONFIGURATION
 // =====================================================
-const FRONTEND_URL = process.env.FRONTEND_URL || "https://train-iah8.vercel.app";
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://train-lilac-three.vercel.app";
 
 const corsOptions = {
   origin: FRONTEND_URL,
